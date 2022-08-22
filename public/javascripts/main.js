@@ -197,15 +197,23 @@ usernameInputEl.value = chance.name();
 usernameInputEl.focus();
 usernameInputEl.select();
 
-document.getElementById('username-form').addEventListener('submit', function(event) {
+// usernameInputEl.value = chance.name();
+usernameInputEl.value = "Pengguna " + Math.floor(Math.random()*100);
+usernameInputEl.focus();
+usernameInputEl.select();
+
+function setUsername(event){
   cursors.localConnection.name = usernameInputEl.value;
   cursors.update();
   quill.enable();
   document.getElementById('connect-panel').style.display = 'none';
   document.getElementById('users-panel').style.display = 'block';
   event.preventDefault();
-  return false;
-});
+}
+
+// document.getElementById('username-form').addEventListener('submit', function(event) {
+window.addEventListener("load", setUsername, false); // IDEA 1: set username login tanpa submit button
+// https://stackoverflow.com/a/14707807
 
 // DEBUG
 
