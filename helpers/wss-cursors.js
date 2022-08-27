@@ -71,7 +71,7 @@ module.exports = function(server) {
           connections[connectionIndex] = data;
         }
 
-        debug('Connection update received:\n%O', data);
+        // debug('Connection update received:\n%O', data);
 
         // Notify all sessions
         notifyConnections(data.id);

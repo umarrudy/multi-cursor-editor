@@ -28,6 +28,7 @@ var quill = window.quill = new Quill('#editor', {
 });
 
 var doc = shareDBConnection.get('documents', 'foobar');
+// commit method: node_modules/sharedb-mongo/index.js:240
 
 var cursorsModule = quill.getModule('cursors');
 
@@ -78,6 +79,7 @@ doc.subscribe(function(err) {
 
   // server -> local
   doc.on('op', function(op, source) {
+    // console.log("Operation", op)
     if (source !== quill) {
       quill.updateContents(op);
       updateUserList();
@@ -192,10 +194,6 @@ function updateUserList() {
     usersListEl.appendChild(userItemEl);
   });
 }
-
-usernameInputEl.value = chance.name();
-usernameInputEl.focus();
-usernameInputEl.select();
 
 // usernameInputEl.value = chance.name();
 usernameInputEl.value = "Pengguna " + Math.floor(Math.random()*100);

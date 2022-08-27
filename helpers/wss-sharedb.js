@@ -21,7 +21,7 @@ module.exports = function(server) {
     shareDBServer.listen(stream);
 
     ws.on('pong', function(data, flags) {
-      debug('Pong received. (%s)', ws.id);
+      debug('Pong received. (%s) data (%s)', ws.id, data);
       ws.isAlive = true;
     });
 

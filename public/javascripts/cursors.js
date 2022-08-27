@@ -26,7 +26,8 @@ cursors.localConnection = new CursorConnection(
 
 // Update
 cursors.update = function() {
-  cursors.socket.send(JSON.stringify(cursors.localConnection));
+  var updateData = JSON.stringify(cursors.localConnection)
+  cursors.socket.send(updateData);
 };
 
 // Init connections array

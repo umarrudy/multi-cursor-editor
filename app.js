@@ -5,6 +5,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var url = require('url');
+// var debug = require('debug')('quill-sharedb-cursors:app');
 
 var app = express();
 var server = require('http').Server(app);
@@ -39,6 +40,7 @@ server.on('upgrade', (request, socket, head) => {
 
   if (pathname === '/sharedb') {
     wssShareDB.handleUpgrade(request, socket, head, (ws) => {
+      // debug("Request", request)
       wssShareDB.emit('connection', ws);
     });
   } else if (pathname === '/cursors') {
